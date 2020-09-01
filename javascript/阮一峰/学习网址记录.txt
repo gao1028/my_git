@@ -1,0 +1,1 @@
+1.https://wangdoc.com/javascript/index.html   //阮一峰Javascript核心语法
