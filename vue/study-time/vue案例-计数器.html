@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <h1>{{name}}</h1> -->
+        <h2>
+            <span>当前计数:</span>
+            <input type="text" v-model="value">
+        </h2>
+        <button @click="increment()">+</button>
+        <button @click="decrement()">-</button>
+    </div>
+</body>
+<script type="text/javascript">
+    const app = new Vue({
+        el: '#app',
+        data: {
+            name: 'leson',
+            value: null
+        },
+        //methods里面是放着方法
+        methods: {
+            increment(){
+                let rag = /^(?:0|\-?[1-9]\d*)$/;
+                let count = this.value*1;
+                if(this.value || this.value == 0){
+                    if(rag.test(count)){
+                        this.value = count+1; 
+                    }else{
+                        alert("请输入合法整数");
+                    }
+                }else{
+                    alert("输入框不能为空");
+                }
+            },
+            decrement(){
+                let rag = /^(?:0|\-?[1-9]\d*)$/;
+                let count = this.value*1;
+                if(this.value || this.value == 0){
+                    if(rag.test(count)){
+                        if(count >= 0){
+                           if(count == 0){
+                                alert("当前为0不可在减,请重新输入");
+                                this.value = null;
+                           }else{
+                                this.value = count-1;
+                           }
+                        }else{
+                            alert("负数不可减,请点击+号")
+                            // this.value = null;
+                        }
+                    }else{
+                        alert("请输入合法整数")
+                    }
+                }else{
+                    alert("输入框不能为空")
+                }
+            },
+        }
+    })
+</script>
+<!--
+在vue中什么是方法,什么是函数
+function abc(){}  这一个整体就是函数
+function abc(){ *** }  这个函数里面的*代表方法 一般方法是与vue的实例对象挂钩的 比如上面使用的:this.value 就是与实例对象挂钩
+ -->
+</html>
